@@ -27,7 +27,7 @@ class ReadWriter:
                     return None
 
     def append_file(self,obj):
-        val=self.get_unique_obj("ID",obj.book_id)
+        val=self.get_unique_obj("ID",obj.i_id)
 
         if val == None:
             with open(self.fp, "ab") as f:

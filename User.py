@@ -1,6 +1,6 @@
 class User:
-    def __init__(self,user_id,name,password,creds,email):
-        self.user_id=user_id
+    def __init__(self,i_id,name,password,creds,email):
+        self.i_id=i_id
         self.name=name
         self.password=password
         self.creds=creds
@@ -9,7 +9,7 @@ class User:
     def get_info(self,key):
         match key.lower():
             case "id":
-                return self.user_id
+                return self.i_id
             case "name":
                 return self.name
             case "password":
@@ -24,7 +24,7 @@ class User:
     def edit_info(self,key,value):
         match key.lower():
             case "id":
-                self.user_id=value
+                self.i_id=value
             case "name":
                 self.name=value
             case "password":
@@ -37,7 +37,7 @@ class User:
                 print("Invalid Key")
 
     def display_info(self):
-        info_contain={"ID":self.user_id,"Name":self.name,"Password":self.password,
+        info_contain={"ID":self.i_id,"Name":self.name,"Password":self.password,
                       "Credentials":self.creds,"Email":self.email}
 
         print("User Info")
