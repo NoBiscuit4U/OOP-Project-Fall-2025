@@ -3,7 +3,7 @@ import pickle
 
 print("Welcome to the _____ library management system.")
 
-list_of_options = ["display menu, quit"]
+list_of_options = ["display menu", "add book", "add user", "edit book", "edit user", "get book catalogue", "display users", "check out book", "return book", "quit"] #not all options
 
 while True:
     user_choice = input("What would you like to do? ")
