@@ -1,10 +1,11 @@
 import ReadWriter as rw
 import Book as bk
+import os
 
 class BookManager:
     def __init__(self):
-        self.fp_book="storage/book.dat"
-        self.fp_sku="storage/booksku.dat"
+        self.fp_book=os.path.abspath(os.getcwd())+r"\storage/book.dat"
+        self.fp_sku=os.path.abspath(os.getcwd())+r"\storage/booksku.dat"
         self.book_readwrite=rw.ReadWriter(self.fp_book)
         self.sku_readwrite = rw.ReadWriter(self.fp_book)
 

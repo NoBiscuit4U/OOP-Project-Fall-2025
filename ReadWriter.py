@@ -1,8 +1,12 @@
 import pickle
+import os
 
 class ReadWriter:
     def __init__(self,fp):
         self.fp=fp
+        if not os.path.isfile(fp):
+            with open(fp, "wb") as f:
+                f.close()
 
     def read_file(self):
         obj_list=[]
