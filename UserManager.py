@@ -1,9 +1,10 @@
 import ReadWriter as rw
 import User as usr
+import os
 
 class UserManager:
     def __init__(self):
-        self.fp_user="storage/user.dat"
+        self.fp_user=os.path.abspath(os.getcwd())+r"\storage\user.dat"
         self.readwrite=rw.ReadWriter(self.fp_user)
 
     def _get_admins(self):
@@ -26,7 +27,7 @@ class UserManager:
 
     def check_cred(self,id,password):
         for admin in self._get_admins():
-            if admin.get_info(id) == id:
+            if admin.get_info("ID") == id:
                 if admin.get_info("password")==password:
                     return True
             else:
