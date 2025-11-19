@@ -25,5 +25,5 @@ if not st.session_state.login_success:
 
 else:
     with st.container(horizontal_alignment="center"):
-        st.button("Access Users")
-        st.button("Access Books")
+        st.button("Access Users", key="users_access")
+        st.button("Access Books", key="books_access")
