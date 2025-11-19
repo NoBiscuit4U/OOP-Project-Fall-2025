@@ -6,7 +6,6 @@ um=UserManager.UserManager()
 
 with st.container(horizontal_alignment="center"):
     st.button("Access Users", key="users_access")
-    st.button("Access Books", key="books_access")
 
     if st.session_state.users_access:
         st.button("Add User", key="add_user")
