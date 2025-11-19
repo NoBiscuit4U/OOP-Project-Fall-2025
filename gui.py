@@ -37,6 +37,10 @@ else:
             st.text_input("Password", key="user_input_password")
             st.text_input("Credentials", key="user_input_creds")
             st.text_input("Email", key="user_input_email")
-            user = User(st.session_state.add_user)
+
+            st.button("Submit", key="user_input_submit")
+
+            if st.session_state.user_input_sumbit:
+                user = User(st.session_state.add_user)
 
 
