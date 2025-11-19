@@ -40,7 +40,13 @@ else:
 
             st.button("Submit", key="user_input_submit")
 
-            if st.session_state.user_input_sumbit:
-                user = User(st.session_state.add_user)
+            if st.session_state.user_input_submit:
+                user = User(
+                    st.session_state.user_input_id,
+                    st.session_state.user_input_name,
+                    st.session_state.user_input_password,
+                    st.session_state.user_input_creds,
+                    st.session_state.user_input_email,
+                )
 
 
