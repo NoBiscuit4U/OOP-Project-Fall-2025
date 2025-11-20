@@ -2,8 +2,6 @@ import streamlit as st
 import UserManager
 from User import User
 
-um=UserManager.UserManager()
-
 with st.container(horizontal_alignment="center"):
     st.text_input("ID", key="user_input_id")
     st.text_input("Name", key="user_input_name")
