@@ -1,4 +1,5 @@
 import csv
+import io
 
 class _CSVFunctions:
     """
@@ -33,17 +34,17 @@ class CSVData:
 
     -------------------------------------------------------------------------------
     """
-    def __init__(self,csvFile="",encoding=""):
+    def __init__(self,csvFile,encoding=""):
         self.csvFile=csvFile
         self.encoding=encoding
         
-        if csvFile!="":
+        if csvFile!=None:
             if encoding=="":
-                with open(csvFile) as f:
+                with os.open(csvFile,flags=0) as f:
                     reader=list(csv.reader(f))
                     rows=reader.copy()
             else:
-                with open(csvFile,encoding=encoding) as f:
+                with os.open(csvFile,flags=0) as f:
                     reader=list(csv.reader(f))
                     rows=reader.copy()
 
