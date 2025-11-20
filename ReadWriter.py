@@ -22,9 +22,9 @@ class ReadWriter:
         with open(self.fp,"rb") as f:
             while 1:
                 try:
-                    if pickle.load(f).get_values(key)==value:
+                    if pickle.load(f).get_info(key)==value:
                         return pickle.load(f)
-                    elif pickle.load(f).get_values(key)=="INV":
+                    elif pickle.load(f).get_info(key)=="INV":
                         print("Invalid Desired Key")
                         return None
                 except:

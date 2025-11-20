@@ -25,9 +25,9 @@ class UserManager:
     def new_user_write(self,i_id,name,password,creds,email):
         self.readwrite.append_file(usr.User(i_id,name,password,creds,email))
 
-    def check_cred(self,id,password):
+    def check_cred(self,name,password):
         for admin in self._get_admins():
-            if admin.get_info("ID") == id:
+            if admin.get_info("name") == name:
                 if admin.get_info("password")==password:
                     return True
             else:

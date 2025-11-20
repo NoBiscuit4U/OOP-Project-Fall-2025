@@ -7,9 +7,10 @@ import UserManager
 st.session_state.um=UserManager.UserManager()
 
 def logout():
-    if st.button("Log out"):
-        st.session_state.login_success=False
-        st.rerun()
+    with st.container(horizontal_alignment="center"):
+        if st.button("Log out"):
+            st.session_state.login_success=False
+            st.rerun()
 
 login=st.Page("login.py",title="Login")
 
