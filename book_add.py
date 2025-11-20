@@ -2,8 +2,6 @@ import streamlit as st
 import BookManager
 from Book import Book
 
-bm = BookManager()
-
 @st.dialog("Missing Information")
 def missing_info():
     st.write("Check that the ID, Title, Author, Publication Date, Price, and SKU are not blank")
