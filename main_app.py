@@ -11,9 +11,11 @@ def logout():
         st.session_state.login_success=False
         st.rerun()
 
-login=st.Page("login.py")
+login=st.Page("login.py",title="Login")
 
-logout=st.Page(logout)
+logout=st.Page(logout,title="Logout")
+
+user_add=st.Page("users_add.py",title="Add User")
 
 if "login_success" not in st.session_state:
     st.session_state.login_success=False
@@ -23,7 +25,7 @@ if not st.session_state.login_success:
 else:
     pg=st.navigation({
         "Account":[logout],
-        "User Management":[],
+        "User Management":[user_add],
         "Book Management":[],
         "Checkout":[]
     })
