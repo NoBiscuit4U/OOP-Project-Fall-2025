@@ -34,9 +34,9 @@ with st.container(horizontal_alignment="center"):
                     st.session_state.user_input_creds,
                     st.session_state.user_input_email,
                 )
+                user_created()
             else:
                 dup_id()
         else:
             missing_info()
 
-        user_created()
