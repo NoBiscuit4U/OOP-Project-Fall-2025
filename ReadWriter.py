@@ -29,6 +29,30 @@ class ReadWriter:
                         return None
                 except:
                     return None
+        f.close()
+    
+    def edit_obj(self,target_id,key,value):
+        new_data=[]
+        with open(self.fp,"rb+") as f:
+            while 1:
+                try:
+                    if pickle.load(f).get_info("ID")==target_id:
+                        new_obj=pickle.load(f)
+                        new_obj.edit_info(key,value)
+                        new_data.append(new_obj)
+                    else:
+                        new_data.append(pickle.load(f))
+                    
+                except:
+                    break
+
+            f.seek(0)
+            f.truncate()
+            
+            for obj in new_data:
+                pickle.dump(obj,f)
+
+        f.close()
 
     def append_file(self,obj):
         val=self.get_unique_obj("ID",obj.i_id)
