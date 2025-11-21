@@ -10,6 +10,10 @@ def missing_info():
 def dup_id():
     st.write("A user with this ID already exists")
 
+@st.dialog("User Created")
+def user_created():
+    st.write("User Created")
+
 with st.container(horizontal_alignment="center"):
     st.text_input("ID", key="user_input_id")
     st.text_input("Name", key="user_input_name")
@@ -34,3 +38,5 @@ with st.container(horizontal_alignment="center"):
                 dup_id()
         else:
             missing_info()
+
+        user_created()
