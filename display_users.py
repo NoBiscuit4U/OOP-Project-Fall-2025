@@ -21,10 +21,15 @@ with st.container(horizontal_alignment="center"):
     st.text_input("What do you want the new value to be? ", key="user_nvalue_input")
 
     st.button("Submit", key="edit_user_submit")
-    if st.session_state.edit_user_submit:
-        st.session_state.um.get_unique_user("ID", st.session_state.user_uid_input).edit_info(st.session_state.user_key_input, st.session_state.user_nvalue_input)
-        st.rerun()
 
+    if st.session_state.edit_user_submit:
+        if not st.session_state.user_uid_input =="" and not st.session_state.user_key_input == "" and not st.session_state.user_nvalue_input == "":
+            st.session_state.um.get_unique_user("ID", st.session_state.user_uid_input).edit_info(st.session_state.user_key_input, st.session_state.user_nvalue_input)
+            st.rerun()
+            user_edited()
+
+        else:
+            missing_info()
 
     confusion_matrix = pd.DataFrame(
         st.session_state.um.get_users_info(),
