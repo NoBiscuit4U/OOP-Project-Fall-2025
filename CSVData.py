@@ -34,17 +34,17 @@ class CSVData:
 
     -------------------------------------------------------------------------------
     """
-    def __init__(self,csvFile,encoding=""):
-        self.csvFile=csvFile
+    def __init__(self,csv_data,encoding=""):
+        self.csvFile=csv_data
         self.encoding=encoding
         
-        if csvFile!=None:
+        if csv_data!=None:
             if encoding=="":
-                with os.open(csvFile,flags=0) as f:
+                with io.BytesIO.read(csv) as f:
                     reader=list(csv.reader(f))
                     rows=reader.copy()
             else:
-                with os.open(csvFile,flags=0) as f:
+                with io.BytesIO.read(csv_data,flags=0) as f:
                     reader=list(csv.reader(f))
                     rows=reader.copy()
 

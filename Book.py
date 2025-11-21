@@ -1,11 +1,10 @@
 class Book:
-    def __init__(self,i_id,title,author,pub_date,price,sku):
+    def __init__(self,i_id,title,author,pub_date,price):
         self.i_id=i_id
         self.title=title
         self.author=author
         self.pub_date=pub_date
         self.price=price
-        self.sku=sku
 
     def get_info(self,key):
         match key.lower():
@@ -19,8 +18,6 @@ class Book:
                 return self.pub_date
             case "price":
                 return self.price
-            case "sku":
-                return self.sku
             case _:
                 return "INV"
 
@@ -36,14 +33,12 @@ class Book:
                 self.pub_date=value
             case "price":
                 self.price=value
-            case "sku":
-                self.sku=value
             case _:
                 print("Invalid Key")
 
     def display_info(self):
         info_contain={"ID":self.i_id,"Title":self.title,"Author":self.author,
-                      "Publish Date":self.pub_date,"Price":self.price,"SKU":self.sku}
+                      "Publish Date":self.pub_date,"Price":self.price}
 
         print("Book Info")
         for key in info_contain.keys():

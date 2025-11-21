@@ -20,6 +20,8 @@ logout=st.Page(logout,title="Logout")
 
 user_add=st.Page("users_add.py",title="Add User")
 
+book_add=st.Page("book_add.py",title="Add Book")
+
 book_bulk_add=st.Page("book_bulk_add.py",title="Bulk Book Creation")
 
 if "login_success" not in st.session_state:
@@ -31,7 +33,7 @@ else:
     pg=st.navigation({
         "Account":[logout],
         "User Management":[user_add],
-        "Book Management":[book_bulk_add],
+        "Book Management":[book_add,book_bulk_add],
         "Checkout":[]
     })
 
