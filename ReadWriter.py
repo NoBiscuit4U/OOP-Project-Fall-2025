@@ -14,7 +14,7 @@ class ReadWriter:
         with open(self.fp,"rb") as f:
             while 1:
                  try:
-                     obj_list.append(pickle.load(f))
+                    obj_list.append(pickle.load(f))
                  except:
                     return obj_list
 

@@ -27,6 +27,12 @@ book_bulk_add=st.Page("book_bulk_add.py",title="Bulk Book Creation")
 if "login_success" not in st.session_state:
     st.session_state.login_success=False
 
+if "file_uploaded" not in st.session_state:
+    st.session_state.file_uploaded=False
+
+if "bulk_edit_csv" not in st.session_state:
+    st.session_state.bulk_edit_csv=""
+
 if not st.session_state.login_success:
     pg=st.navigation([login])
 else:
