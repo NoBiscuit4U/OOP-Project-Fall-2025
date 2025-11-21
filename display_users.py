@@ -16,18 +16,22 @@ with st.container(horizontal_alignment="center"):
     def dup_id():
         st.write("A user with this ID already exists")
 
-    st.text_input("ID", key="which_user_input_id")
-    st.text_input("Which value do yu want to edit? ", key="which_user_value_input")
-    st.text_input("What do you want the new value to be? ", key="new_user_value_input")
+    st.text_input("ID", key="user_uid_input")
+    st.text_input("Which value do yu want to edit? ", key="user_key_input")
+    st.text_input("What do you want the new value to be? ", key="user_nvalue_input")
 
-    st.button("Submit", key="edit_user_input_submit")
+    st.button("Submit", key="edit_user_submit")
+    if st.session_state.edit_user_submit:
+        st.session_state.um.get_unique_user("ID", st.session_state.user_uid_input).edit_info(st.session_state.user_key_input, st.session_state.user_nvalue_input)
+        st.rerun()
+
 
     confusion_matrix = pd.DataFrame(
         st.session_state.um.get_users_info(),
         columns=st.session_state.um.get_keys()
     )
 
-    st.table(confusion_matrix, border="horizontal")
+    st.dataframe(confusion_matrix,height="auto")
 
 
 

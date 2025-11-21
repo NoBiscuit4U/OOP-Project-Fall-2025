@@ -24,4 +24,4 @@ with st.container(horizontal_alignment="center"):
         st.session_state.bm.get_books_info(),
         columns=st.session_state.bm.get_keys()
     )
-    st.table(confusion_matrix, border="horizontal")
+    st.dataframe(confusion_matrix,height="auto")
