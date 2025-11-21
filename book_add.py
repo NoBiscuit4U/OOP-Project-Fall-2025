@@ -10,6 +10,10 @@ def missing_info():
 def dup_id():
     st.write("A book with this ID already exists")
 
+@st.dialog("Book Created")
+def book_created():
+    st.write("Book Created")
+
 with st.container(horizontal_alignment="center"):
     st.text_input("ID", key="book_input_id")
     st.text_input("Title", key="book_input_title")
@@ -37,3 +41,4 @@ with st.container(horizontal_alignment="center"):
                 dup_id()
         else:
             missing_info()
+        book_created()
