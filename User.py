@@ -22,7 +22,6 @@ class User:
                 return "INV"
 
     def edit_info(self,key,value):
-        print(key)
         match key.lower():
             case "id":
                 self.i_id=value

@@ -7,7 +7,6 @@ class BookManager:
         self.fp_book=os.path.abspath(os.getcwd())+r"\storage/book.dat"
         self.fp_sku=os.path.abspath(os.getcwd())+r"\storage/booksku.dat"
         self.book_readwrite=rw.ReadWriter(self.fp_book)
-        self.sku_readwrite = rw.ReadWriter(self.fp_book)
 
     def get_books(self):
         return self.book_readwrite.read_file()

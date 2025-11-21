@@ -24,6 +24,9 @@ class UserManager:
 
     def new_user_write(self,i_id,name,password,creds,email):
         self.readwrite.append_file(usr.User(i_id,name,password,creds,email))
+    
+    def edit_unique_user(self,id,key,value):
+        self.readwrite.edit_obj(id,key,value)
 
     def check_cred(self,name,password):
         for admin in self._get_admins():
