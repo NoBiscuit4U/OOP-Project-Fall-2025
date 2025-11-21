@@ -19,6 +19,7 @@ class Book:
             case "price":
                 return self.price
             case _:
+                print(f"Invalid Key: {key.lower()}")
                 return "INV"
 
     def edit_info(self,key,value):

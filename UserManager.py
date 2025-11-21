@@ -28,6 +28,9 @@ class UserManager:
     def edit_unique_user(self,id,key,value):
         self.readwrite.edit_obj(id,key,value)
 
+    def remove_unique_user(self,id):
+        self.readwrite.remove_obj(id)
+
     def check_cred(self,name,password):
         for admin in self._get_admins():
             if admin.get_info("name") == name:

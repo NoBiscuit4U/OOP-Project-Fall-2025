@@ -22,35 +22,33 @@ class ReadWriter:
         with open(self.fp,"rb") as f:
             while 1:
                 try:
-                    if pickle.load(f).get_info(key)==value:
+                    if pickle.load(f).get_info(key,value)==value:
                         return pickle.load(f)
-                    elif pickle.load(f).get_info(key)=="INV":
-                        print("Invalid Desired Key")
-                        return None
                 except:
                     return None
         f.close()
     
     def edit_obj(self,target_id,key,value):
-        new_data=[]
-        with open(self.fp,"rb+") as f:
-            while 1:
-                try:
-                    if pickle.load(f).get_info("ID")==target_id:
-                        new_obj=pickle.load(f)
-                        new_obj.edit_info(key,value)
-                        new_data.append(new_obj)
-                    else:
-                        new_data.append(pickle.load(f))
-                    
-                except:
-                    break
+        data=self.read_file()
+        with open(self.fp,"wb") as f:   
+            for obj in data:
+                if int(obj.get_info("ID"))==int(target_id):
+                    n_obj=obj
+                    n_obj.edit_info(key,value)
+                    print(n_obj.get_info("Title"))
+                    print("TARGET DUMP")
+                    pickle.dump(n_obj,f)
+                else:
+                    pickle.dump(obj,f)
 
-            f.seek(0)
-            f.truncate()
-            
-            for obj in new_data:
-                pickle.dump(obj,f)
+        f.close()
+    
+    def remove_obj(self,target_id):
+        data=self.read_file()
+        with open(self.fp,"wb") as f:   
+            for obj in data:
+                if not int(obj.get_info("ID"))==int(target_id):
+                    pickle.dump(obj,f)
 
         f.close()
 

@@ -17,6 +17,12 @@ class BookManager:
     def new_book_write(self,i_id,title,author,pub_date,price,sku):
         self.book_readwrite.append_file(bk.Book(i_id,title,author,pub_date,price,sku))
 
+    def edit_unique_book(self,id,key,value):
+        self.book_readwrite.edit_obj(id,key,value)
+    
+    def remove_unique_book(self,id):
+        self.book_readwrite.remove_obj(id)
+
     def get_books_info(self):
         books_info=[]
         for book in self.book_readwrite.read_file():
