@@ -33,8 +33,8 @@ with st.container(horizontal_alignment="center"):
                     st.session_state.book_input_pub_date,
                     st.session_state.book_input_price,
                 )
+                book_created()
             else:
                 dup_id()
         else:
             missing_info()
-        book_created()
