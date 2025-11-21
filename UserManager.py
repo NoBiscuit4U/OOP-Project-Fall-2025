@@ -32,3 +32,12 @@ class UserManager:
                     return True
             else:
                 return False
+
+    def get_users_info(self):
+        users_info=[]
+        for user in self.readwrite.read_file():
+            users_info.append(user.get_info_array())
+        return users_info
+
+    def get_keys(self):
+        return ["ID", "Name", "Password", "Credentials", "Email"]

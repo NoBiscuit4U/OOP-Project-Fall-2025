@@ -43,3 +43,6 @@ class Book:
         print("Book Info")
         for key in info_contain.keys():
             print(f"    {key}: {info_contain[key]}")
+
+    def get_info_array(self):
+        return[self.i_id, self.title, self.author, self.pub_date, self.price]
