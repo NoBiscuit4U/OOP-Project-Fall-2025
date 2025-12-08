@@ -14,8 +14,8 @@ class BookManager:
     def get_unique_book(self,key,value):
         return self.book_readwrite.get_unique_obj(key,value)
 
-    def new_book_write(self,i_id,title,author,pub_date,price,sku):
-        self.book_readwrite.append_file(bk.Book(i_id,title,author,pub_date,price,sku))
+    def new_book_write(self,i_id,title,author,pub_date):
+        self.book_readwrite.append_file(bk.Book(i_id,title,author,pub_date))
 
     def edit_unique_book(self,id,key,value):
         self.book_readwrite.edit_obj(id,key,value)
@@ -30,4 +30,4 @@ class BookManager:
         return books_info
 
     def get_keys(self):
-        return ["ID", "Title", "Author", "Date", "Price"]
+        return ["ID", "Title", "Author", "Date"]

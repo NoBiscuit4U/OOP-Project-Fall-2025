@@ -1,40 +1,48 @@
 import streamlit as st
-import BookManager
-from Book import Book
+import random as rand
 
 @st.dialog("Missing Information")
 def missing_info():
-    st.write("Check that the ID, Title, and Author are not blank")
-
-@st.dialog("Duplicate ID")
-def dup_id():
-    st.write("A Book with this ID already exists")
+    st.write("Check that the Title, and Author are not blank")
 
 @st.dialog("Book Created")
 def book_created():
     st.write("Book Created")
 
 with st.container(horizontal_alignment="center"):
-    st.text_input("ID", key="book_input_id")
     st.text_input("Title", key="book_input_title")
     st.text_input("Author", key="book_input_author")
     st.text_input("Publication Date",key="book_input_pub_date")
-    st.text_input("Price", key="book_input_price")
 
     st.button("Submit", key="book_input_submit")
 
     if st.session_state.book_input_submit:
-        if not st.session_state.book_input_id=="" and not st.session_state.book_input_title=="" and not st.session_state.book_input_author=="":
-            if st.session_state.bm.get_unique_book("id",st.session_state.book_input_id)==None:
-                st.session_state.bm.new_book_write(
-                    st.session_state.book_input_id,
-                    st.session_state.book_input_title,
-                    st.session_state.book_input_author,
-                    st.session_state.book_input_pub_date,
-                    st.session_state.book_input_price,
-                )
-                book_created()
+        if not st.session_state.book_input_title=="" and not st.session_state.book_input_author=="":
+            n_id_base=""
+            n_id=""
+            p_str=st.session_state.book_input_title
+
+            if not " " in p_str:
+                tokens = [p_str[0]]
             else:
-                dup_id()
+                tokens = p_str.split(" ")
+
+            for token in tokens:
+                n_id += token[0].upper()
+
+            n_id += ("-"+str(rand.randint(0, 1000)))
+
+            for obj in st.session_state.um.get_users():
+                if obj.get_info("id") == n_id:
+                    n_id=(n_id_base+"-"+str(rand.randint(0, 1000)))
+
+            st.session_state.bm.new_book_write(
+                n_id,
+                st.session_state.book_input_title,
+                st.session_state.book_input_author,
+                st.session_state.book_input_pub_date
+            )
+            book_created()
+
         else:
             missing_info()

@@ -1,3 +1,5 @@
+from operator import truediv
+
 import streamlit as st
 import UserManager
 from User import User
@@ -25,8 +27,13 @@ with st.container(horizontal_alignment="center"):
 
     if st.session_state.user_input_submit:
         if not st.session_state.user_input_id=="" and not st.session_state.user_input_name=="" and not st.session_state.user_input_password=="":
-            print(st.session_state.um.get_unique_user("id",st.session_state.user_input_id))
-            if st.session_state.um.get_unique_user("id",st.session_state.user_input_id)==None:
+            id_check=True
+
+            for obj in st.session_state.um.get_users():
+                if obj.get_info("id")==st.session_state.user_input_id:
+                    id_check=False
+
+            if id_check:
                 st.session_state.um.new_user_write(
                     st.session_state.user_input_id,
                     st.session_state.user_input_name,

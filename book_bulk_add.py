@@ -41,22 +41,30 @@ with st.container(horizontal_alignment="center"):
         st.button("Add Books",key="add_books_bulk")
         
         if st.session_state.add_books_bulk:
-            n_id=0
+            n_id=""
             for i in range(0,st.session_state.bulk_edit_csv.size-1):
                 print(st.session_state.bulk_edit_csv[st.session_state.book_bulk_Title][i])
 
                 if st.session_state.book_bulk_ID=="Generate IDs":
-                    n_id=rand.randint(0,999999)
+                    p_str=st.session_state.bulk_edit_csv[st.session_state.book_bulk_Title][i]
+                    if not " " in p_str:
+                        tokens=[p_str[0]]
+                    else:
+                        tokens=p_str.split(" ")
+
+                    for token in tokens:
+                        n_id += token[0].upper()
+
+                    n_id+="-"+str(rand.randint(0,1000))
                 else:
                     n_id=st.session_state.bulk_edit_csv[st.session_state.book_bulk_ID][i]
 
-                if st.session_state.um.get_unique_user("id",n_id)==None and st.session_state.um.get_unique_user("name",st.session_state.bulk_edit_csv[st.session_state.book_bulk_Title][i])==None:
+                if st.session_state.um.get_unique_user("name",st.session_state.bulk_edit_csv[st.session_state.book_bulk_Title][i]) is None:
                     st.session_state.bm.new_book_write(
                         n_id,
                         st.session_state.bulk_edit_csv[st.session_state.book_bulk_Title][i],
                         st.session_state.bulk_edit_csv[st.session_state.book_bulk_Author][i],
                         st.session_state.bulk_edit_csv[st.session_state.book_bulk_Publish_Date][i],
-                        st.session_state.bulk_edit_csv[st.session_state.book_bulk_Price][i],
                     )
                 else:
                     print(st.session_state.bulk_edit_csv[st.session_state.book_bulk_Title][i]," Already Exists")
