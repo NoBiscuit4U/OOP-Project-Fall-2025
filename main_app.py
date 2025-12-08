@@ -28,6 +28,10 @@ display_books=st.Page("display_books.py",title="Display Books")
 
 book_bulk_add=st.Page("book_bulk_add.py",title="Bulk Book Creation")
 
+book_checkout=st.Page("book_checkout.py", title="Checkout Books")
+
+books_borrowed=st.Page("books_borrowed.py", title="Shelf")
+
 if "login_success" not in st.session_state:
     st.session_state.login_success=False
 
@@ -44,7 +48,7 @@ else:
         "Account":[logout],
         "User Management":[user_add,display_users],
         "Book Management":[book_add,display_books,book_bulk_add],
-        "Checkout":[]
+        "Checkout":[book_checkout,books_borrowed]
     })
 
 pg.run()

@@ -5,6 +5,7 @@ class User:
         self.password=password
         self.creds=creds
         self.email=email
+        self.books_borrowed=[]
 
     def get_info(self,key):
         match key.lower():
