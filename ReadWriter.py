@@ -19,20 +19,19 @@ class ReadWriter:
                     return obj_list
 
     def get_unique_obj(self,key,value):
-        with open(self.fp,"rb") as f:
-            while 1:
-                try:
-                    if pickle.load(f).get_info(key,value)==value:
-                        return pickle.load(f)
-                except:
-                    return None
-        f.close()
+        data=self.read_file()
+
+        for obj in data:
+            if obj.get_info(key) == value:
+                return obj
+
+        return None
     
     def edit_obj(self,target_id,key,value):
         data=self.read_file()
         with open(self.fp,"wb") as f:   
             for obj in data:
-                if int(obj.get_info("ID"))==int(target_id):
+                if str(obj.get_info("ID"))==str(target_id):
                     n_obj=obj
                     n_obj.edit_info(key,value)
                     print(n_obj.get_info("Title"))
@@ -47,7 +46,7 @@ class ReadWriter:
         data=self.read_file()
         with open(self.fp,"wb") as f:   
             for obj in data:
-                if not int(obj.get_info("ID"))==int(target_id):
+                if not str(obj.get_info("ID"))==str(target_id):
                     pickle.dump(obj,f)
 
         f.close()

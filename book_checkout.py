@@ -4,7 +4,6 @@ import pandas as pd
 with st.container(horizontal_alignment="center"):
 
 
-
     st.text_input("Search", key="book_search_input")
     st.selectbox("Search Criteria", options=["ID", "Author", "Title"], key="book_search")
 
