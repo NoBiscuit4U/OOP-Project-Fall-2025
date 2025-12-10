@@ -19,6 +19,8 @@ class User:
                 return self.creds
             case "email":
                 return self.email
+            case "books":
+                return self.books_borrowed
             case _:
                 return "INV"
 
@@ -33,9 +35,21 @@ class User:
             case "creds":
                 self.creds=value
             case "email":
-                self.email=value
+                self.email = value
+            case "books":
+                self.books=value
             case _:
                 print("Invalid Key")
+
+    def borrow_book(self,book):
+        self.books_borrowed.append(book)
+
+    def return_book(self,id):
+        for i in range(0,len(self.books_borrowed)):
+            if self.books_borrowed[i].get_info("id")==id:
+                self.books_borrowed.pop(i)
+                break
+
 
     def display_info(self):
         info_contain={"ID":self.i_id,"Name":self.name,"Password":self.password,
