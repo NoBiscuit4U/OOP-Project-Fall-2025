@@ -16,7 +16,10 @@ if st.session_state.search_books_borrowed_user_shelf_id and not st.session_state
         if usr.i_id == st.session_state.books_borrowed_user_shelf_ID:
             for book in usr.books_borrowed:
                 st.text(book)
-                st.button("Return", key = "return_book")
+                st.button("Return", key = "return_borrowed_book")
+                if st.session_state.return_borrowed_book:
+                    st.text("Returned: ", book)
+                    st.session_state.usr.return_book()
 
 
 
