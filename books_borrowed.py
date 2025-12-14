@@ -4,24 +4,20 @@ if "shelf_login_success" not in st.session_state:
     st.session_state.shelf_login_success=False
 
 st.title("**Shelf**")
-if not st.session_state.shelf_login_success:
-    with st.container(horizontal_alignment="center"):
-
-        st.text_input("Username", key="which_user_name")
-        st.text_input("Password", key="which_user_password")
-
-        st.button("Login",key="shelf_login_submit")
-
-        if st.session_state.shelf_login_submit:
-            if st.session_state.um.check_cred(st.session_state.which_user_name,st.session_state.which_user_password):
-                st.session_state.shelf_login_success = True
-                st.rerun()
-            else:
-                st.session_state.shelf_login_success = False
 
 
-if st.session_state.shelf_login_success==True:
-    st.text("Hahahahahahahahahahahahahhahahahhahahahahahahhahahhahahahahahhahahahhaaha")
+
+
+st.text_input("User ID", key="books_borrowed_user_shelf_ID")
+st.button("Search", key = "search_books_borrowed_user_shelf_id")
+if st.session_state.search_books_borrowed_user_shelf_id and not st.session_state.books_borrowed_user_shelf_ID == "":
+    usr_shelves = st.session_state.um.get_users()
+    for usr in usr_shelves:
+        if usr.i_id == st.session_state.books_borrowed_user_shelf_ID:
+            for book in usr.books_borrowed:
+                st.text(book)
+                st.button("Return", key = "return_book")
+
 
 
 
