@@ -39,7 +39,7 @@ with st.container(horizontal_alignment="center"):
                     st.session_state.user_input_name,
                     st.session_state.user_input_password,
                     st.session_state.user_input_creds,
-                    st.session_state.user_input_email,
+                    st.session_state.user_input_email
                 )
                 user_created()
             else:

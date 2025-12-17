@@ -22,7 +22,7 @@ class ReadWriter:
         data=self.read_file()
 
         for obj in data:
-            if obj.get_info(key) == value:
+            if str(obj.get_info(key)) == str(value):
                 return obj
 
         return None
@@ -34,13 +34,12 @@ class ReadWriter:
                 if str(obj.get_info("ID"))==str(target_id):
                     n_obj=obj
                     n_obj.edit_info(key,value)
-                    print(n_obj.get_info("Title"))
-                    print("TARGET DUMP")
                     pickle.dump(n_obj,f)
                 else:
                     pickle.dump(obj,f)
 
         f.close()
+    
     
     def remove_obj(self,target_id):
         data=self.read_file()

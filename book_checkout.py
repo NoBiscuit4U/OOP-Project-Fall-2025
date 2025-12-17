@@ -29,3 +29,10 @@ with st.container(horizontal_alignment="center"):
                                     )
 
             st.rerun()
+    
+    st.text_input("User ID", key="checkout_user_id")
+    st.text_input("Book ID", key="checkout_book_id")
+    st.button("Add to Account",key="checkout_add_account")
+
+    if st.session_state.checkout_add_account:
+        st.session_state.um.borrow_book(st.session_state.checkout_user_id,st.session_state.bm.get_unique_book("id",st.session_state.checkout_book_id))

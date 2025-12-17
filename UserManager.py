@@ -36,8 +36,25 @@ class UserManager:
             if admin.get_info("name") == name:
                 if admin.get_info("password")==password:
                     return True
-            else:
-                return False
+
+        return False
+    
+    def borrow_book(self,user_id,book):
+        usr=self.get_unique_user("id",user_id)
+
+        n_books=usr.get_info("books")
+        n_books.append(book)
+        self.readwrite.edit_obj(user_id,"books",n_books)
+
+    def return_book(self,user_id,book_id):
+        usr=self.get_unique_user("id",user_id)
+        books=usr.get_info("books")
+
+        for i in range(0,len(books)):
+            if books[i].get_info("id")==book_id:
+                books.pop(i)
+                self.readwrite.edit_obj(user_id,"books",books)
+                break
 
     def get_users_info(self):
         users_info=[]
